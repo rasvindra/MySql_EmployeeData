@@ -1,4 +1,4 @@
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const inquirer =require("inquirer");
 const consoleTable =require("console.table")
 
@@ -44,7 +44,7 @@ const init = () => {
             case "Update the Job Role for an Employee": updateJobrole();
             break;
             default: throw new Error("We Apologize. Something Went Wrong. Please Retry");
-            
+
         }
     });
 };
