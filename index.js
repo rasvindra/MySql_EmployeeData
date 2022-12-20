@@ -1,7 +1,12 @@
 const mysql = require("mysql2");
 const inquirer =require("inquirer");
 const consoleTable =require("console.table");
-const ravifunctions = require("./requestFunctions.js")
+const {showallDept} = require("./requestFunctions.js");
+const {showemployeeRoles} = require("./requestFunctions.js");
+const {reviewEmployeeData} = require("./requestFunctions.js");
+const {addDepartment} = require("./requestFunctions.js");
+const {addEmployee} = require("./requestFunctions.js");
+const {addNewJobrole} = require("./requestFunctions.js");
 
 const connection = mysql.createConnection({
     host:"localhost",
@@ -30,23 +35,24 @@ const init = () => {
         },
     ]).then ((res) => {
         switch (res.choices) {
-            case "Show all Departments": ravifunctions.showallDept();
+            case "Show all Departments":showallDept();
             break;
-            case "Show all Employee Job roles": ravifunctions.showemployeeRoles();
+            case "Show all Employee Job roles":showemployeeRoles();
             break;
-            case "Review all Employee Data": ravifunctions.reviewEmployeeData();
+            case "Review all Employee Data":reviewEmployeeData();
             break;
-            case "Add a new Department to the Company": addDepartment();
+            case "Add a new Department to the Company":addDepartment();
             break;
-            case "Add a New Employee to the Company": addEmployee();
+            case "Add a New Employee to the Company":addEmployee();
             break;
-            case "Add a New Job role for an Employee": addNewJobrole();
+            case "Add a New Job role for an Employee":addNewJobrole();
             break;
-            case "Update the Job Role for an Employee": updateJobrole();
+            case "Update the Job Role for an Employee":updateJobrole();
             break;
             default: throw new Error("We Apologize. Something Went Wrong. Please Retry");
         }
     });
+
 };
 
 connection.connect((err) => {
