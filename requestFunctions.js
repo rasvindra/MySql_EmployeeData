@@ -131,12 +131,13 @@ const updateJobrole = async () => {
 }
 
  
-module.exports = showallDept;
-module.exports = showemployeeRoles;
-module.exports = reviewEmployeeData;
-module.exports = addDepartment;
-module.exports = addNewJobrole;
-module.exports = updateJobrole;
+module.exports = {showallDept,
+showemployeeRoles,
+reviewEmployeeData,
+addDepartment,
+addNewJobrole,
+updateJobrole,
+}
 
 // class ravi {
 //   showallDept();

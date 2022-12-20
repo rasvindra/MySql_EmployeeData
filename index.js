@@ -1,12 +1,7 @@
 const mysql = require("mysql2");
 const inquirer =require("inquirer");
 const consoleTable =require("console.table");
-const {showallDept} = require("./requestFunctions.js");
-const {showemployeeRoles} = require("./requestFunctions.js");
-const {reviewEmployeeData} = require("./requestFunctions.js");
-const {addDepartment} = require("./requestFunctions.js");
-const {addEmployee} = require("./requestFunctions.js");
-const {addNewJobrole} = require("./requestFunctions.js");
+const {showallDept,showemployeeRoles,reviewEmployeeData,addDepartment,updateJobrole,addNewJobrole} = require("./requestFunctions.js");
 
 const connection = mysql.createConnection({
     host:"localhost",
