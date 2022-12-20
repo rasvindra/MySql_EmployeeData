@@ -35,7 +35,7 @@ const addDepartment = async () => {
     const response = await inquirer.prompt([
         {
             name: "newDepartment",
-            tyoe: "input",
+            type: "input",
             message: "What is the name of the New Department to be added?"
         }
     ])
