@@ -1,6 +1,7 @@
 const mysql = require("mysql2");
 const inquirer =require("inquirer");
-const consoleTable =require("console.table")
+const consoleTable =require("console.table");
+const ravifunctions = require("./requestFunctions.js")
 
 const connection = mysql.createConnection({
     host:"localhost",
@@ -29,11 +30,11 @@ const init = () => {
         },
     ]).then ((res) => {
         switch (res.choices) {
-            case "Show all Departments": showallDept();
+            case "Show all Departments": ravifunctions.showallDept();
             break;
-            case "Show all Employee Job roles": showemployeeRoles();
+            case "Show all Employee Job roles": ravifunctions.showemployeeRoles();
             break;
-            case "Review all Employee Data": reviewEmployeeData();
+            case "Review all Employee Data": ravifunctions.reviewEmployeeData();
             break;
             case "Add a new Department to the Company": addDepartment();
             break;
@@ -44,7 +45,6 @@ const init = () => {
             case "Update the Job Role for an Employee": updateJobrole();
             break;
             default: throw new Error("We Apologize. Something Went Wrong. Please Retry");
-
         }
     });
 };
