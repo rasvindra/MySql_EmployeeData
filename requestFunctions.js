@@ -1,5 +1,7 @@
 const { default: inquirer } = require("inquirer");
 const mysql = require("mysql2");
+const {connection} = require("./config/connection.js")
+// const {init} = require("./index.js")
 
 const showallDept = () => {
   const query =
@@ -8,12 +10,12 @@ const showallDept = () => {
     if (err) throw err;
     console.table(res);
     init();
-  });
+  })
 };
 
 const showemployeeRoles = () => {
   const query =
-    "SELECT job.id, job.title, job.salary, department.department_name FROM job JOIN department ON job.department_id = department,id;";
+    "SELECT job.id, job.title, job.salary, department.department_name FROM job JOIN department ON job.department_id = department.id;";
   connection.query(query, (err, res) => {
     if (err) throw err;
     console.table(res);
@@ -24,7 +26,7 @@ const showemployeeRoles = () => {
 const reviewEmployeeData = () => {
   const query =
     "SELECT job.id, job.title, job.salary, department.department_name, employee.first_name, employee.last_name, employee.manager_id FROM job JOIN department ON job.department_id = department.id JOIN employee ON job.id = employee.id;";
-  connection.query((err, res) => {
+  connection.query(query, (err, res) => {
     if (err) throw err;
     console.table(res);
     init();
@@ -139,10 +141,3 @@ addNewJobrole,
 updateJobrole,
 }
 
-// class ravi {
-//   showallDept();
-//   showemployeeRoles();
-//   reviewEmployeeData();
-// }
-
-// module.exports = ravi;
