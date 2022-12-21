@@ -1,9 +1,12 @@
+-- Database creation
 DROP DATABASE IF EXISTS employee_data;
 
 CREATE DATABASE employee_data;
 
+-- uses this database
 USE employee_data;
 
+-- creates tables for this database
 CREATE TABLE department (
  id INT AUTO_INCREMENT PRIMARY KEY,
  department_name VARCHAR(30) NOT NULL

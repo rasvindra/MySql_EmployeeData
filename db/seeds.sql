@@ -1,3 +1,4 @@
+-- seed file I created to see if values could be augmented
 INSERT INTO department(department_name)
 VALUES
     ("Engineering"),

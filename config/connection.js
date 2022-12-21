@@ -1,30 +1,22 @@
-const express = require("express")
+//NPM package needed for connection
+//cookie cutter connection script
 const mysql = require("mysql2");
-const {init} = require("../index.js")
-
-const PORT = process.env.PORT || 3301;
-const app = express()
-
-app.use(express.urlencoded({extended:false}));
-app.use(express.json());
+// const {init} = require("../index.js")
 
 const connection = mysql.createConnection({
     host:"localhost",
+    port: 3306,
     user: "root",
     password: "password",
     database: "employee_data", 
 });
 
 
-app.listen(PORT, () => {
-    console.log(`Running on port ${PORT}`)
-
+connection.connect((err) => {
+    if (err) throw err;
+    console.table("Thank you for Choosing our Application to help the Needs of your Company!");
+    // init();
 });
-init;
-// connection.connect((err) => {
-//     if (err) throw err;
-//     console.table("Thank you for Choosing our Application to help the Needs of your Company!");
-//     // init();
-// });
 
+//exports function to be used in both js files
 module.exports = {connection}

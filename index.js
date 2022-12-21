@@ -1,18 +1,10 @@
-
+//NPM packages and exported functions from requesFunctions.js
 const mysql = require("mysql2");
 const inquirer =require("inquirer");
 const consoleTable =require("console.table");
 const {showallDept,showemployeeRoles,reviewEmployeeData,addDepartment,updateJobrole,addNewJobrole} = require("./requestFunctions.js");
-// const {connection} = require("./config/connection.js")
 
-const connection = mysql.createConnection({
-    host:"localhost",
-    port: 3306,
-    user: "root",
-    password: "password",
-    database: "employee_data", 
-});
-
+//Initialize function that prompts user with choices to augment or view data
 const init = () => {
     inquirer.prompt ([
         {
@@ -30,6 +22,7 @@ const init = () => {
                 "Update the Job Role for an Employee"
             ],
         },
+        //based on user selection calls funtion to run appropriate MySQL query
     ]).then ((res) => {
         switch (res.choices) {
             case "Show all Departments":showallDept();
@@ -58,10 +51,6 @@ const init = () => {
     });
 
 };
-connection.connect((err) => {
-    if (err) throw err;
-    console.table("Thank you for Choosing our Application to help the Needs of your Company!");
-    init();
-});
-
-// module.exports = {init}
+//calls function the first time index.js is run
+init()
+// module.exports = {init};
