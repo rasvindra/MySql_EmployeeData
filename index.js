@@ -230,7 +230,7 @@ const addNewJobrole = () => {
             newJob.push(ans.newJob, ans.newsalary, ans.departments);
             let query = `INSERT INTO job (title, salary, department_id)
                             VALUES (?, ?, ?)`
-            db.query(query, newRole, (err) => {
+            db.query(query, newJob, (err) => {
                 if (err) throw err;
                 console.log("New Job Added");
                 init();
