@@ -2,8 +2,22 @@
 const mysql = require("mysql2");
 const inquirer =require("inquirer");
 const table =require("console.table");
-const db = require("./config/connection.js")
+
 // const {showallDept,showemployeeRoles,reviewEmployeeData,addDepartment,updateJobrole,addNewJobrole} = require("./requestFunctions.js");
+const db = mysql.createConnection({
+    host:"127.0.0.1",
+    port: 3306,
+    user: "root",
+    password: "password",
+    database: "employee_data", 
+});
+
+db.connect((err) => {
+    if (err) throw err;
+    console.table("Thank you for Choosing our Application to help the Needs of your Company!");
+    init();
+});
+
 
 //Initialize function that prompts user with choices to augment or view data
 const init = () => {
@@ -153,7 +167,7 @@ const addEmployee = () => {
                                     const chosenManager = ans.manager;
                                     emp.push(chosenManager);
                                     let query = 
-                                    `INSERT INTO employee (first_name, last_name, role_id, manager_id)
+                                    `INSERT INTO employee (first_name, last_name, job_id, manager_id)
                                     VALUES (?, ?, ?, ?)`;
                                     db.query(query, emp, (err) => {
                                         if (err) throw err;
@@ -268,5 +282,4 @@ const updateJobrole = () => {
         });
     });
 };
-//calls function the first time index.js is run
-init()
+
