@@ -9,7 +9,8 @@ const {connection} = require("./config/connection.js")
 const showallDept = () => {
   const query =
     "SELECT department.id AS 'Department ID' , department.department_name AS 'Department Name' FROM department;";
-  connection.query(query, (err, res) => {
+  // work on promise then do .then init in index.js
+    return connection.promise().query(query, (err, res) => {
     if (err) throw err;
     console.table(res);
     init();

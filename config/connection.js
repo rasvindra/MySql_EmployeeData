@@ -3,7 +3,7 @@
 const mysql = require("mysql2");
 // const {init} = require("../index.js")
 
-const connection = mysql.createConnection({
+const db = mysql.createConnection({
     host:"localhost",
     port: 3306,
     user: "root",
@@ -19,4 +19,4 @@ connection.connect((err) => {
 });
 
 //exports function to be used in both js files
-module.exports = {connection}
+module.exports = db
