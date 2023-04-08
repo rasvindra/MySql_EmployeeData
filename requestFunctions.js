@@ -142,11 +142,3 @@ const updateJobrole = async () => {
 }
 
 // exports the functions to be called in index.js file
-module.exports = {showallDept,
-showemployeeRoles,
-reviewEmployeeData,
-addDepartment,
-addNewJobrole,
-updateJobrole,
-}
-
